@@ -19,7 +19,6 @@ contract Charity {
     mapping(uint => Donation) donations;
     mapping(uint => address) donors;
 
-    uint public totalDonationAmount;
     uint totalDonationNumber;
     Beneficiary public beneficiary;
     address public admin;
@@ -29,13 +28,12 @@ contract Charity {
     }
 
     //Donation functions
-    function donate(uint _amount, string memory _message) external payable {
+    function donate(string memory _message) external payable {
         totalDonationNumber++;
-        totalDonationAmount += _amount;
 
         donations[totalDonationNumber] = Donation(
             totalDonationNumber,
-            _amount,
+            msg.value,
             msg.sender,
             block.timestamp,
             _message
@@ -43,13 +41,12 @@ contract Charity {
         donors[totalDonationNumber] = msg.sender;
     }
 
-    function donate(uint _amount) public payable {
+    function donate() external payable {
         totalDonationNumber++;
-        totalDonationAmount += _amount;
 
         donations[totalDonationNumber] = Donation(
             totalDonationNumber,
-            _amount,
+            msg.value,
             msg.sender,
             block.timestamp,
             ""
@@ -58,7 +55,7 @@ contract Charity {
     }
 
     function getTotalAmount() public view returns (uint) {
-        return totalDonationAmount;
+        return address(this).balance;
     }
 
     function getDonorList() public view returns (address[] memory) {
@@ -74,7 +71,7 @@ contract Charity {
     function getDonationsRecord() public view returns (Donation[] memory) {
         Donation[] memory donationsRecord = new Donation[](totalDonationNumber);
 
-        for (uint i = 0; i < totalDonationAmount; i++) {
+        for (uint i = 0; i < totalDonationNumber; i++) {
             donationsRecord[i] = donations[i++];
         }
 
@@ -115,10 +112,8 @@ contract Charity {
 
     //Beneficiary functions
     function withdraw() public isBeneficiary {
-        uint totalDonationAmount = address(this).balance;
-
         (bool success, ) = beneficiary._address.call{
-            value: totalDonationAmount
+            value: address(this).balance
         }("");
         require(success, "Failed to send Matic");
     }
