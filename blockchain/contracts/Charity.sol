@@ -19,16 +19,23 @@ contract Charity {
     mapping(uint => Donation) donations;
     mapping(uint => address) donors;
 
-    uint totalDonationNumber;
+    uint public totalDonationNumber;
     Beneficiary public beneficiary;
     address public admin;
+
+    bool isHalted;
 
     constructor() {
         admin = msg.sender;
     }
 
+    modifier isEmergency() {
+        require(!isHalted, "Donations have been halted");
+        _;
+    }
+
     //Donation functions
-    function donate(string memory _message) external payable {
+    function donate(string memory _message) external payable isEmergency {
         totalDonationNumber++;
 
         donations[totalDonationNumber] = Donation(
@@ -41,7 +48,7 @@ contract Charity {
         donors[totalDonationNumber] = msg.sender;
     }
 
-    function donate() external payable {
+    function donate() external payable isEmergency {
         totalDonationNumber++;
 
         donations[totalDonationNumber] = Donation(
@@ -54,25 +61,30 @@ contract Charity {
         donors[totalDonationNumber] = msg.sender;
     }
 
-    function getTotalAmount() public view returns (uint) {
+    function getTotalAmount() public view isEmergency returns (uint) {
         return address(this).balance;
     }
 
-    function getDonorList() public view returns (address[] memory) {
+    function getDonorList() public view isEmergency returns (address[] memory) {
         address[] memory donorList = new address[](totalDonationNumber);
 
         for (uint i = 0; i < totalDonationNumber; i++) {
-            donorList[i] = donors[i++];
+            donorList[i] = donors[i + 1];
         }
 
         return donorList;
     }
 
-    function getDonationsRecord() public view returns (Donation[] memory) {
+    function getDonationsRecord()
+        public
+        view
+        isEmergency
+        returns (Donation[] memory)
+    {
         Donation[] memory donationsRecord = new Donation[](totalDonationNumber);
 
         for (uint i = 0; i < totalDonationNumber; i++) {
-            donationsRecord[i] = donations[i++];
+            donationsRecord[i] = donations[i + 1];
         }
 
         return donationsRecord;
@@ -100,7 +112,9 @@ contract Charity {
         beneficiary.story = _story;
     }
 
-    function stopDonation() public isAdmin {}
+    function toggleDonationActive() public isAdmin {
+        isHalted = !isHalted;
+    }
 
     modifier isBeneficiary() {
         require(
@@ -111,7 +125,7 @@ contract Charity {
     }
 
     //Beneficiary functions
-    function withdraw() public isBeneficiary {
+    function withdraw() public isEmergency isBeneficiary {
         (bool success, ) = beneficiary._address.call{
             value: address(this).balance
         }("");
