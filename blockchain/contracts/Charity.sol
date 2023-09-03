@@ -18,8 +18,8 @@ contract Charity {
         string story;
     }
 
-    mapping(uint => Donation) donations;
-    mapping(uint => address) donors;
+    Donation[] donations;
+    address[] donors;
 
     uint public totalDonationNumber;
     Beneficiary public beneficiary;
@@ -42,27 +42,31 @@ contract Charity {
     function donate(string memory _message) external payable isEmergency {
         totalDonationNumber++;
 
-        donations[totalDonationNumber] = Donation(
-            totalDonationNumber,
-            msg.value,
-            msg.sender,
-            block.timestamp,
-            _message
+        donations.push(
+            Donation(
+                totalDonationNumber,
+                msg.value,
+                msg.sender,
+                block.timestamp,
+                _message
+            )
         );
-        donors[totalDonationNumber] = msg.sender;
+        donors.push(msg.sender);
     }
 
     function donate() external payable isEmergency {
         totalDonationNumber++;
 
-        donations[totalDonationNumber] = Donation(
-            totalDonationNumber,
-            msg.value,
-            msg.sender,
-            block.timestamp,
-            ""
+        donations.push(
+            Donation(
+                totalDonationNumber,
+                msg.value,
+                msg.sender,
+                block.timestamp,
+                ""
+            )
         );
-        donors[totalDonationNumber] = msg.sender;
+        donors.push(msg.sender);
     }
 
     function getTotalAmount() public view isEmergency returns (uint) {
@@ -70,13 +74,7 @@ contract Charity {
     }
 
     function getDonorList() public view isEmergency returns (address[] memory) {
-        address[] memory donorList = new address[](totalDonationNumber);
-
-        for (uint i = 0; i < totalDonationNumber; i++) {
-            donorList[i] = donors[i + 1];
-        }
-
-        return donorList;
+        return donors;
     }
 
     function getDonationsRecord()
@@ -85,13 +83,7 @@ contract Charity {
         isEmergency
         returns (Donation[] memory)
     {
-        Donation[] memory donationsRecord = new Donation[](totalDonationNumber);
-
-        for (uint i = 0; i < totalDonationNumber; i++) {
-            donationsRecord[i] = donations[i + 1];
-        }
-
-        return donationsRecord;
+        return donations;
     }
 
     modifier isAdmin() {
