@@ -6,13 +6,13 @@ import Typewriter from "typewriter-effect";
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <div className="hero">
-      <div className="bg-black/80 bg">
+    <div className="hero min-h-screen">
+      <div className="bg-black/80 min-h-screen">
         <Section>
           <div className="py-24 relative">
             <div className="container">
               <div className="flex flex-col lg:flex-row lg:px-8 w-full justify-between items-center text-center">
-                <div className="flex flex-col gap-4 w-[calc(100%-2rem)] p-3">
+                <div className="flex flex-col gap-4 w-[calc(100%-2rem)] p-3 relative">
                   <h1 className="text-[85px] mb-4 lg:mb-8 font-robotoSlab font-bold tracking-tight text-[#e8ebe6]">
                     <Typewriter
                       onInit={(typewriter) => {
@@ -43,11 +43,18 @@ const Home = () => {
 
                   <div className="flex gap-4 justify-center">
                     <Button
-                      className="text-lg px-6 py-3"
+                      className="text-3xl px-6 py-6 items-center"
                       onClick={() => navigate("/auth")}
                     >
                       Donate now
                     </Button>
+                  </div>
+                  <div className="absolute xs:bottom-4 -bottom-44 w-full flex justify-center items-center ">
+                    <a href="#about">
+                      <div className="w-[33px] h-[58px] rounded-3xl border-4 border-secondary flex justify-center items-center p-2">
+                        <div className="w-3 h-3 rounded-full bg-secondary animate-bounce" />
+                      </div>
+                    </a>
                   </div>
                 </div>
               </div>

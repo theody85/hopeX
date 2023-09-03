@@ -11,10 +11,20 @@ const NavBar = () => {
           <img src={logoWhite} alt="logo" className="w-52" />
         </Link>
 
-        <div className="flex gap-16 items-center">
-          <Button onClick={() => navigate("/donation-stats")}>
+        <div className="flex gap-12 items-center text-sm">
+          <Link
+            to="#about"
+            className="text-white font-robotoSlab font-bold hover:scale-105 hover:text-white/90"
+          >
+            About Us
+          </Link>
+          <Link
+            to="/donation-stats"
+            className="text-white font-robotoSlab font-bold hover:scale-105 hover:text-white/90"
+          >
             View Donations
-          </Button>
+          </Link>
+          <Button onClick={() => navigate("/auth")}>Donate Now</Button>
         </div>
       </div>
     </div>
