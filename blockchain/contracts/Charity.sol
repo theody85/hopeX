@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
+import "./lib/withdraw.sol";
+
 contract Charity {
     struct Donation {
         uint id;
@@ -24,6 +26,8 @@ contract Charity {
     address public admin;
 
     bool isHalted;
+
+    using Withdraw for address;
 
     constructor() {
         admin = msg.sender;
@@ -125,10 +129,14 @@ contract Charity {
     }
 
     //Beneficiary functions
-    function withdraw() public isEmergency isBeneficiary {
-        (bool success, ) = beneficiary._address.call{
-            value: address(this).balance
-        }("");
-        require(success, "Failed to send Matic");
+    // function withdraw() public isEmergency isBeneficiary {
+    //     (bool success, ) = beneficiary._address.call{
+    //         value: address(this).balance
+    //     }("");
+    //     require(success, "Failed to send Matic");
+    // }
+
+    function withdraw() external isEmergency isBeneficiary {
+        Withdraw.withdraw(beneficiary._address, address(this).balance);
     }
 }
