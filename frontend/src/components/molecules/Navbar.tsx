@@ -5,7 +5,7 @@ import { Button } from "../shadcn/ui/button";
 const NavBar = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex w-full px-8 lg:px-16 lg:py-3 z-50 bg-[#163300]">
+    <div className="flex w-full px-8 lg:px-16 lg:py-2  fixed top-0 left-0 z-50">
       <div className="md:mx-0 lg:mx-auto lg:px-8 lg:py-4 w-full flex justify-between items-center">
         <Link to="/">
           <img src={logoWhite} alt="logo" className="w-52" />

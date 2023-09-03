@@ -9,10 +9,10 @@ function App() {
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route path="auth" element={<Auth />} />
-        <Route path="*">"404 Not Found"</Route>"
+        <Route path="*">"404 Not Found"</Route>
+        <Route path="/donation-stats" element={<DonationStats />} />
       </Route>
       <Route path="/donate" element={<Donate />} />
-      <Route path="/donation-stats" element={<DonationStats />} />
     </Routes>
   );
 }
