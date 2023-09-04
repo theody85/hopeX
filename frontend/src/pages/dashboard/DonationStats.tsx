@@ -7,20 +7,24 @@ import {
 } from "@/components/shadcn/ui/card";
 import { RecentDonorList } from "./RecentDonorList";
 import { DonorsTable } from "./DonorsTable";
+import useQueryStats from "./hooks/useQueryStats";
 
 export default function DonationStats() {
+  const { totalAmountRaised, totalDonors, totalDonations } = useQueryStats();
   return (
     <>
       <div className="hidden flex-col md:flex">
         <div className="border-b"></div>
         <div className="flex-1 space-y-4 p-8 pt-6">
-          <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+          <div className="flex items-center justify-between space-y-3">
+            <h2 className="text-5xl font-bold tracking-tight text-[#163300] mb-3">
+              Donations
+            </h2>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-7">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <Card>
+              <Card className="shadow-md border-none">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     Total Amount Raised
@@ -39,13 +43,10 @@ export default function DonationStats() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">$45,231.89</div>
-                  <p className="text-xs text-muted-foreground">
-                    +20.1% from last month
-                  </p>
+                  <div className="text-3xl font-bold">{totalAmountRaised}</div>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="shadow-md border-none">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     Total Donors
@@ -66,15 +67,14 @@ export default function DonationStats() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">+2350</div>
-                  <p className="text-xs text-muted-foreground">
-                    +180.1% from last month
-                  </p>
+                  <div className="text-3xl font-bold">{totalDonors}</div>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="shadow-md border-none">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Sales</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    Total Donations
+                  </CardTitle>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -90,16 +90,13 @@ export default function DonationStats() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">+12,234</div>
-                  <p className="text-xs text-muted-foreground">
-                    +19% from last month
-                  </p>
+                  <div className="text-3xl font-bold">{totalDonations}</div>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="shadow-md border-none">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
-                    Active Now
+                    Donation Status
                   </CardTitle>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -115,27 +112,24 @@ export default function DonationStats() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">+573</div>
-                  <p className="text-xs text-muted-foreground">
-                    +201 since last hour
-                  </p>
+                  <div className="text-3xl font-bold">Active</div>
                 </CardContent>
               </Card>
             </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-              <Card className="col-span-4">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7 my-4">
+              <Card className="col-span-5 shadow-md border-none">
                 <CardHeader>
-                  <CardTitle>Donors</CardTitle>
+                  <CardTitle>Donation Details</CardTitle>
                 </CardHeader>
                 <CardContent className="pl-2">
                   <DonorsTable />
                 </CardContent>
               </Card>
-              <Card className="col-span-3">
+              <Card className="col-span-2 shadow-md border-none">
                 <CardHeader>
                   <CardTitle>Recent Donors</CardTitle>
                   <CardDescription>
-                    You made 265 sales this month.
+                    {totalDonors} donors have donated.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>

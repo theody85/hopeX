@@ -32,26 +32,32 @@ const NavBar = () => {
             src={logoWhite}
             alt="logo"
             className={cn(
-              "w-52 transition-all duration-300 ease-in-out",
+              "w-48 transition-all duration-300 ease-in-out",
               scroll ? "w-32" : "",
             )}
           />{" "}
         </Link>
 
-        <div className="flex gap-12 items-center text-sm">
+        <div className="flex gap-12 items-center text-sm text-white font-robotoSlab font-bold">
+          <Link
+            to="/"
+            className=" hover:scale-105 hover:text-white/90 transition-all duration-300 ease-in-out"
+          >
+            Home
+          </Link>
           <LinkScroll
             to="about"
             spy={true}
             smooth={true}
             duration={1000}
             offset={-100}
-            className="text-white font-robotoSlab font-bold hover:scale-105 hover:text-white/90 transition-all duration-300 ease-in-out"
+            className=" hover:scale-105 hover:text-white/90 transition-all duration-300 ease-in-out"
           >
             About Us
           </LinkScroll>
           <Link
             to="/donation-stats"
-            className="text-white font-robotoSlab font-bold hover:scale-105 hover:text-white/90 transition-all duration-300 ease-in-out"
+            className="hover:scale-105 hover:text-white/90 transition-all duration-300 ease-in-out"
           >
             View Donations
           </Link>

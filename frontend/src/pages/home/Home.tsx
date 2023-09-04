@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <>
       <div className="hero">
-        <div className="bg-[#0E1111]/80 min-h-screen">
+        <div className="bg-[#0E1111]/80 min-h-screen donate-bg">
           <Section>
             <div className="py-16 relative">
               <div className="container">

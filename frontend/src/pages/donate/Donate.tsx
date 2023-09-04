@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PaymentBox from "./components/PaymentBox";
 import { logoWhite } from "@/assets";
 import { useAuth } from "@/context/AuthContext";
@@ -6,7 +6,6 @@ import { useEffect } from "react";
 
 const Donate = () => {
   const navigate = useNavigate();
-  // const location = useLocation();
 
   const { isAuthenticated } = useAuth();
 

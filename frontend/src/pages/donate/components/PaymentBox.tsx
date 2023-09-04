@@ -15,6 +15,7 @@ import { ethers } from "ethers";
 import { charityContract } from "@/contract";
 import { useRef, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 
 const PaymentBox = () => {
   const { ethereum } = useAuth();
@@ -56,7 +57,7 @@ const PaymentBox = () => {
         return;
       }
 
-      setSuccessMessage(`Thank you  for donating!`);
+      setSuccessMessage(`Thank you for donating!`);
       setError("");
     }
     // purpose
@@ -103,10 +104,10 @@ const PaymentBox = () => {
         </CardContent>
         <CardFooter className="flex justify-between">
           <Button variant="outline">Cancel</Button>
-          <Button disabled={isSubmitting}>Send</Button>
+          <Button disabled={isSubmitting && !successMessage}>Send</Button>
         </CardFooter>
         <div className="flex flex-col text-sm mb-5">
-          {isSubmitting && (
+          {isSubmitting && !successMessage && (
             <div className="flex w-full justify-center">
               <ThreeDots
                 height="40"
@@ -118,7 +119,19 @@ const PaymentBox = () => {
               />
             </div>
           )}
-          {successMessage && <p className="text-center">{successMessage}</p>}
+          {successMessage && (
+            <p className="text-center">
+              {successMessage}
+              <Link
+                to="/donation-stats"
+                className="text-[#4fa94d] cursor-pointer"
+              >
+                {" "}
+                Click
+              </Link>{" "}
+              to view donations
+            </p>
+          )}
           {error && <p className="text-center text-red-500">{error}</p>}
         </div>
       </Card>

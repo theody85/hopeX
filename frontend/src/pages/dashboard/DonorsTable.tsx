@@ -7,71 +7,43 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/shadcn/ui/table";
-
-const invoices = [
-  {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
-  },
-];
+import useQueryStatistics from "./hooks/useQueryStats";
+import { ethers } from "ethers";
+import moment from "moment";
 
 export const DonorsTable = () => {
+  const { donations } = useQueryStatistics();
   return (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
+      <TableCaption>A list of donations.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Invoice</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead className="text-right">Amount</TableHead>
+          <TableHead className="w-[100px] ">Id</TableHead>
+          <TableHead>Amount</TableHead>
+          <TableHead>Donor</TableHead>
+          <TableHead>Timestamp</TableHead>
+          <TableHead className="text-right">Purpose</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+        {donations.map((donation) => (
+          //@ts-ignore
+          <TableRow key={donation.id}>
+            {/* @ts-ignore */}
+            <TableCell className="font-medium">{Number(donation.id)}</TableCell>
+            {/* @ts-ignore */}
+            <TableCell>{ethers.formatEther(donation.amount)}</TableCell>
+
+            <TableCell className="hover:text-[#4fa94d] cursor-pointer">
+              {/* @ts-ignore */}
+              {donation.donor.slice(0, 20)}...
+            </TableCell>
+            <TableCell>
+              {/* @ts-ignore */}
+              {moment.unix(Number(donation.timestamp)).fromNow()}
+            </TableCell>
+            {/* @ts-ignore */}
+            <TableCell className="text-right">{donation.message}</TableCell>
           </TableRow>
         ))}
       </TableBody>
