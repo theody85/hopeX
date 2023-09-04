@@ -1,26 +1,57 @@
 import { Link, useNavigate } from "react-router-dom";
 import { logoWhite } from "@/assets";
 import { Button } from "../shadcn/ui/button";
+import { useEffect, useState } from "react";
+import { cn } from "../utils";
+import { Link as LinkScroll } from "react-scroll";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    const scrollListener = () => {
+      setScroll(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", scrollListener);
+    return () => {
+      window.removeEventListener("scroll", scrollListener);
+    };
+  }, []);
   return (
-    <div className="flex w-full px-8 lg:px-16 lg:py-2  fixed top-0 left-0 z-50">
+    <div
+      className={cn(
+        "bg-[#0E1111] flex w-full px-8 lg:px-16 lg:py-2 z-50 transition-all duration-300 ease-in-out",
+        scroll ? "fixed top-0 left-0" : "",
+      )}
+    >
       <div className="md:mx-0 lg:mx-auto lg:px-8 lg:py-4 w-full flex justify-between items-center">
         <Link to="/">
-          <img src={logoWhite} alt="logo" className="w-52" />
+          <img
+            src={logoWhite}
+            alt="logo"
+            className={cn(
+              "w-52 transition-all duration-300 ease-in-out",
+              scroll ? "w-32" : "",
+            )}
+          />{" "}
         </Link>
 
         <div className="flex gap-12 items-center text-sm">
-          <Link
-            to="#about"
-            className="text-white font-robotoSlab font-bold hover:scale-105 hover:text-white/90"
+          <LinkScroll
+            to="about"
+            spy={true}
+            smooth={true}
+            duration={1000}
+            offset={-100}
+            className="text-white font-robotoSlab font-bold hover:scale-105 hover:text-white/90 transition-all duration-300 ease-in-out"
           >
             About Us
-          </Link>
+          </LinkScroll>
           <Link
             to="/donation-stats"
-            className="text-white font-robotoSlab font-bold hover:scale-105 hover:text-white/90"
+            className="text-white font-robotoSlab font-bold hover:scale-105 hover:text-white/90 transition-all duration-300 ease-in-out"
           >
             View Donations
           </Link>
