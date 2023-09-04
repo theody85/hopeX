@@ -14,6 +14,7 @@ type AuthContextType = {
     switchChain: (chainId: string) => Promise<void>;
     ethereum?: any;
   };
+  
 const AuthContext = createContext({
   isAuthenticated: false,
 } as AuthContextType);

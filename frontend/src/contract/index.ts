@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import ABI from "./abi.json";
+// import { Charity } from "@/types/charity";
 
-const CONTRACT_ADDRESS = "0x008E18Ba39f99E2A4ce794011E17ffb727bf9f86";
+const CONTRACT_ADDRESS = "0x6c4b0CD0C193cFa0d060B988cdBFDb299A83501B";
 
-export const charity = new ethers.Contract(CONTRACT_ADDRESS, ABI);
+export const charityContract = new ethers.Contract(CONTRACT_ADDRESS, ABI);

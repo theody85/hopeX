@@ -81,3 +81,7 @@ textarea {
 .hero {
   background-image: url("/src/assets/bg.jpg");
 }
+
+.donate-bg {
+  background-image: url("/src/assets/bg.svg");
+}

@@ -5,7 +5,6 @@ import { useAuth } from "@/context/AuthContext";
 import { useEffect } from "react";
 
 const Donate = () => {
-  const {} = useAuth();
   const navigate = useNavigate();
   // const location = useLocation();
 
@@ -19,8 +18,7 @@ const Donate = () => {
 
   return (
     <div className="container relative min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-      <div className="relative hidden h-full flex-col bg-[#163300] p-10 text-white dark:border-r lg:flex">
-        {/* <Logo /> */}
+      <div className="donate-bg relative hidden h-full flex-col bg-[#163300] p-10 text-white dark:border-r lg:flex">
         <Link to="/">
           <img src={logoWhite} alt="logo" className="w-52" />
         </Link>
