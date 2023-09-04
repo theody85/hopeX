@@ -42,22 +42,22 @@ describe("Charity", function () {
         const { charity, donor2 } = await loadFixture(deployCharityFixture);
 
         const donate = charity.connect(donor2)["donate()"];
-        await donate({ value: 10 });
+        await donate({ value: ethers.parseEther("10") });
 
         let totalDonationAmount = await charity.getTotalAmount();
-        expect(totalDonationAmount).to.equal(10);
+        expect(totalDonationAmount).to.equal(ethers.parseEther("10"));
 
         //Test 2
-        await donate({ value: 100 });
+        await donate({ value: ethers.parseEther("100") });
 
         totalDonationAmount = await charity.getTotalAmount();
-        expect(totalDonationAmount).to.equal(110);
+        expect(totalDonationAmount).to.equal(ethers.parseEther("110"));
 
         //Test 3
-        await donate({ value: 1000 });
+        await donate({ value: ethers.parseEther("1000") });
 
         totalDonationAmount = await charity.getTotalAmount();
-        expect(totalDonationAmount).to.equal(1110);
+        expect(totalDonationAmount).to.equal(ethers.parseEther("1110"));
       });
     });
 
