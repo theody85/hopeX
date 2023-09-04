@@ -157,12 +157,12 @@ describe("Charity", function () {
 
     it("getDonationsRecord: should be able to query donations", async () => {
       const { charity } = await loadFixture(deployCharityFixture);
-      expect(await charity.getDonationsRecord()).to.instanceof(Object);
+      expect(await charity.getDonationsRecord()).to.instanceof(Array);
     });
 
     it("getDonorList: should be able to query donor list", async () => {
       const { charity } = await loadFixture(deployCharityFixture);
-      expect(await charity.getDonorList()).to.instanceof(Object);
+      expect(await charity.getDonorList()).to.instanceof(Array);
     });
   });
 
