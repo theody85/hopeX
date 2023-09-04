@@ -70,7 +70,9 @@ const PaymentBox = () => {
     <form onSubmit={handleDonation}>
       <Card className="w-full shadow-lg border-none py-5">
         <CardHeader>
-          <CardTitle className="mb-3">Make Donation</CardTitle>
+          <CardTitle className="mb-3 text-3xl font-robotoSlab">
+            Make Donation
+          </CardTitle>
           <CardDescription>
             Enter required details to make a donation.
           </CardDescription>
@@ -102,9 +104,10 @@ const PaymentBox = () => {
             </div>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button variant="outline">Cancel</Button>
-          <Button disabled={isSubmitting && !successMessage}>Send</Button>
+        <CardFooter className="flex  w-full justify-center">
+          <Button disabled={isSubmitting && !successMessage} className="px-10">
+            Send
+          </Button>
         </CardFooter>
         <div className="flex flex-col text-sm mb-5">
           {isSubmitting && !successMessage && (

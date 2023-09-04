@@ -26,7 +26,7 @@ const NavBar = () => {
         scroll ? "fixed top-0 left-0" : "",
       )}
     >
-      <div className="md:mx-0 lg:mx-auto lg:px-8 lg:py-4 w-full flex justify-between items-center">
+      <div className="md:mx-0 lg:mx-auto lg:px-8 lg:py-2 w-full flex justify-between items-center">
         <Link to="/">
           <img
             src={logoWhite}

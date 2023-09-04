@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import PaymentBox from "./components/PaymentBox";
-import { logoWhite } from "@/assets";
+import { logoWhite, transfer } from "@/assets";
 import { useAuth } from "@/context/AuthContext";
 import { useEffect } from "react";
 
@@ -19,11 +19,11 @@ const Donate = () => {
     <div className="container relative min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       <div className="donate-bg relative hidden h-full flex-col bg-[#163300] p-10 text-white dark:border-r lg:flex">
         <Link to="/">
-          <img src={logoWhite} alt="logo" className="w-52" />
+          <img src={logoWhite} alt="logo" className="w-48" />
         </Link>
 
-        <div className="flex items-center h-full justify-center">
-          image here
+        <div className="flex items-center h-full justify-center shadow-2xl">
+          <img src={transfer} alt="transfer" />
         </div>
       </div>
 
