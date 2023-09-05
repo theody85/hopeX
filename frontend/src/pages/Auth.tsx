@@ -54,6 +54,18 @@ const Auth = () => {
           Connect Wallet
         </Button>
       )}
+      {status === "connected" && (
+        <Button
+          className="text-xl font-normal px-8 py-4"
+          onClick={() =>
+            navigate(`${prevPath}`, {
+              state: { from: location },
+            })
+          }
+        >
+          Refresh
+        </Button>
+      )}
     </div>
   );
 };

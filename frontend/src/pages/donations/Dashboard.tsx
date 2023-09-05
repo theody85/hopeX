@@ -28,7 +28,7 @@ export default function DonationStats() {
           <p>Loading data...</p>
         </div>
       ) : (
-        <div className="hidden flex-col mt-24 md:flex">
+        <div className="hidden flex-col md:flex">
           <div className="border-b"></div>
           <div className="flex-1 space-y-5 p-8 pt-6">
             <h2 className="text-5xl font-bold tracking-tight text-[#163300]  mb-8 font-robotoSlab">

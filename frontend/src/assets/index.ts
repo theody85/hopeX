@@ -8,6 +8,9 @@ import donateBg from "./bg.svg";
 import transfer from "./transger.svg";
 import bitcoin from "./bitcoin.svg";
 import arrow from "./right-arrow.png";
+import notFound from "./not-found.svg";
+import mission from "./mission.jpg";
+import strategy from "./strategy.jpg";
 
 export {
   logoWhite,
@@ -20,4 +23,7 @@ export {
   transfer,
   bitcoin,
   arrow,
+  notFound,
+  mission,
+  strategy,
 };

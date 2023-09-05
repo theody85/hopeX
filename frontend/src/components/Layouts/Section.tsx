@@ -8,7 +8,7 @@ const Section = ({
   id?: string;
 }) => {
   return (
-    <div className="md:mx-0 lg:mx-auto lg:px-8 lg:pb-8 w-full lg:pt-28" id={id}>
+    <div className="md:mx-0 lg:mx-auto lg:px-8 lg:pb-8 w-full lg:pt-20" id={id}>
       {children}
     </div>
   );

@@ -19,7 +19,7 @@ const Donations = () => {
           <p>Loading data...</p>
         </div>
       ) : (
-        <div className="lg:px-8 py-6 mt-24">
+        <div className="lg:px-8 py-6">
           <h2 className="text-5xl font-bold tracking-tight text-[#163300] mb-8 font-robotoSlab">
             Donations
           </h2>

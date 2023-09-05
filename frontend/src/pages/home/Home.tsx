@@ -62,7 +62,7 @@ const Home = () => {
                         </Button>
                       </Jump>
                     </div>
-                    <div className="absolute xs:bottom-4 -bottom-36 w-full flex justify-center items-center ">
+                    <div className="absolute xs:bottom-4 -bottom-40 w-full flex justify-center items-center ">
                       <LinkScroll
                         to="about"
                         spy={true}
@@ -91,15 +91,21 @@ const Home = () => {
           </div>
         </div>
       </Section>
-      <div className="flex flex-col items-center w-full p-12">
-        <h2 className="text-4xl text-[#163300] font-extrabold my-10 ">
-          Subscribe to our newsletter
-        </h2>
-        <div className="grid grid-cols-3 px-4 md:w-2/5 mb-10">
-          <input className="col-span-2" placeholder="Enter your email" />
-          <button className="bg-[#3bac5d] px-4 py-2 text-white text-base font-bold col-span-1">
-            Subscribe
-          </button>
+
+      <div className="w-full flex justify-center items-center my-20 ">
+        <div className="flex flex-col items-center w-4/5 bg-[#163300] rounded-xl shadow p-12">
+          <h2 className="text-4xl text-white font-extrabold my-10 ">
+            Subscribe to our newsletter
+          </h2>
+          <div className="grid grid-cols-3 px-4 md:w-2/5 mb-10  ">
+            <input
+              className="col-span-2 rounded-l-md "
+              placeholder="Enter your email"
+            />
+            <button className="bg-[#3bac5d] px-4 py-2 text-white text-base font-bold col-span-1 rounded-r-md">
+              Subscribe
+            </button>
+          </div>
         </div>
       </div>
     </>
