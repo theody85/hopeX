@@ -7,7 +7,7 @@ import {
 import useQueryStats from "./hooks/useQueryStats";
 import { Bitcoin } from "lucide-react";
 import { ThreeDots } from "react-loader-spinner";
-import Top5Donations from "./Top5Donations";
+import Top5Donations from "./components/Top5Donations";
 
 export default function DonationStats() {
   const { totalAmountRaised, totalDonors, totalDonations, loading, donations } =
@@ -30,12 +30,10 @@ export default function DonationStats() {
       ) : (
         <div className="hidden flex-col md:flex">
           <div className="border-b"></div>
-          <div className="flex-1 space-y-4 p-8 pt-6">
-            <div className="flex items-center justify-between space-y-3">
-              <h2 className="text-5xl font-bold tracking-tight text-[#163300] mb-3">
-                Donations
-              </h2>
-            </div>
+          <div className="flex-1 space-y-5 p-8 pt-6">
+            <h2 className="text-5xl font-bold tracking-tight text-[#163300]  mb-8 font-robotoSlab">
+              Dashboard
+            </h2>
 
             <div className="space-y-7">
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

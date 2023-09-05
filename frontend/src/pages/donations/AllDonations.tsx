@@ -1,6 +1,6 @@
 import { ThreeDots } from "react-loader-spinner";
-import { DonationsTable } from "../dashboard/DonationsTable";
-import useQueryStatistics from "../dashboard/hooks/useQueryStats";
+import { DonationsTable } from "./components/DonationsTable";
+import useQueryStatistics from "./hooks/useQueryStats";
 
 const Donations = () => {
   const { donations, loading } = useQueryStatistics();
@@ -20,7 +20,7 @@ const Donations = () => {
         </div>
       ) : (
         <div className="lg:px-8 py-6">
-          <h2 className="text-5xl font-bold tracking-tight text-[#163300] mb-10">
+          <h2 className="text-5xl font-bold tracking-tight text-[#163300] mb-8 font-robotoSlab">
             Donations
           </h2>
           <DonationsTable donations={donations} />

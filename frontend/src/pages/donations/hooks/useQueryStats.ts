@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { charityContract } from "@/contract";
 import { ethers } from "ethers";
-import { Charity } from "@/types/charity";
 
 const useQueryStatistics = () => {
   const { ethereum } = useAuth();

@@ -56,7 +56,7 @@ const NavBar = () => {
             About Us
           </LinkScroll>
           <Link
-            to="/donations-stats"
+            to="/donations-dashboard"
             className="hover:scale-105 hover:text-[#4fa94d] transition-all duration-300 ease-in-out"
           >
             View Donations
