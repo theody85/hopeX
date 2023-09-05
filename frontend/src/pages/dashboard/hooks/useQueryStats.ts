@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { charityContract } from "@/contract";
 import { ethers } from "ethers";
+import { Charity } from "@/types/charity";
 
 const useQueryStatistics = () => {
   const { ethereum } = useAuth();
@@ -11,10 +12,12 @@ const useQueryStatistics = () => {
   const [donorList, setDonorList] = useState([]);
   const [totalDonations, setTotalDonations] = useState(null);
   const [totalDonors, setTotalDonors] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (ethereum) {
       (async () => {
+        setLoading(true);
         const provider = new ethers.BrowserProvider(ethereum);
         const signer = await provider.getSigner();
 
@@ -42,6 +45,7 @@ const useQueryStatistics = () => {
         setDonorList(fetchedDonorList);
         setTotalDonations(fetchedDonations.length);
         setTotalDonors(fetchedDonorList.length);
+        setLoading(false);
       })();
     }
   }, [ethereum]);
@@ -52,6 +56,7 @@ const useQueryStatistics = () => {
     donorList,
     totalDonations,
     totalDonors,
+    loading,
   };
 };
 

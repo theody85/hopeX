@@ -41,7 +41,7 @@ const NavBar = () => {
         <div className="flex gap-12 items-center text-sm text-white font-robotoSlab font-bold">
           <Link
             to="/"
-            className=" hover:scale-105 hover:text-white/90 transition-all duration-300 ease-in-out"
+            className=" hover:scale-105 hover:text-[#4fa94d] transition-all duration-300 ease-in-out"
           >
             Home
           </Link>
@@ -51,13 +51,13 @@ const NavBar = () => {
             smooth={true}
             duration={1000}
             offset={-100}
-            className=" hover:scale-105 hover:text-white/90 transition-all duration-300 ease-in-out"
+            className=" hover:scale-105 hover:text-[#4fa94d] transition-all duration-300 ease-in-out cursor-pointer"
           >
             About Us
           </LinkScroll>
           <Link
-            to="/donation-stats"
-            className="hover:scale-105 hover:text-white/90 transition-all duration-300 ease-in-out"
+            to="/donations-stats"
+            className="hover:scale-105 hover:text-[#4fa94d] transition-all duration-300 ease-in-out"
           >
             View Donations
           </Link>

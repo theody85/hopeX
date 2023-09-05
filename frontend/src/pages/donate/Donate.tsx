@@ -17,7 +17,7 @@ const Donate = () => {
 
   return (
     <div className="container relative min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-      <div className="donate-bg relative hidden h-full flex-col bg-[#163300] p-10 text-white dark:border-r lg:flex">
+      <div className="donate-bg relative hidden h-full flex-col bg-[#163300] px-10 pt-5 pb-10 text-white dark:border-r lg:flex">
         <Link to="/">
           <img src={logoWhite} alt="logo" className="w-48" />
         </Link>

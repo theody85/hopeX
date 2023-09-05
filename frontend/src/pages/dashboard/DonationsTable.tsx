@@ -1,28 +1,32 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/shadcn/ui/table";
-import useQueryStatistics from "./hooks/useQueryStats";
+import { Charity } from "@/types/charity";
 import { ethers } from "ethers";
 import moment from "moment";
 
-export const DonorsTable = () => {
-  const { donations } = useQueryStatistics();
+type DonationsTableProps = {
+  donations: Charity.DonationStructOutput[];
+};
+
+export const DonationsTable: React.FC<DonationsTableProps> = ({
+  donations,
+}) => {
+  // const { Items } = useQueryStatistics();
   return (
     <Table>
-      <TableCaption>A list of donations.</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px] ">Id</TableHead>
           <TableHead>Amount</TableHead>
           <TableHead>Donor</TableHead>
           <TableHead>Timestamp</TableHead>
-          <TableHead className="text-right">Purpose</TableHead>
+          <TableHead>Purpose</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -30,20 +34,23 @@ export const DonorsTable = () => {
           //@ts-ignore
           <TableRow key={donation.id}>
             {/* @ts-ignore */}
-            <TableCell className="font-medium">{Number(donation.id)}</TableCell>
+            <TableCell className="font-medium">
+              uId_
+              {Number(donation.id)}
+            </TableCell>
             {/* @ts-ignore */}
             <TableCell>{ethers.formatEther(donation.amount)}</TableCell>
 
             <TableCell className="hover:text-[#4fa94d] cursor-pointer">
               {/* @ts-ignore */}
-              {donation.donor.slice(0, 20)}...
+              {donation.donor.slice(0, 28)}...
             </TableCell>
             <TableCell>
               {/* @ts-ignore */}
               {moment.unix(Number(donation.timestamp)).fromNow()}
             </TableCell>
             {/* @ts-ignore */}
-            <TableCell className="text-right">{donation.message}</TableCell>
+            <TableCell>{donation.message}</TableCell>
           </TableRow>
         ))}
       </TableBody>

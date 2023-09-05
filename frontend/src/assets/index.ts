@@ -7,6 +7,7 @@ import bg from "./bg.jpg";
 import donateBg from "./bg.svg";
 import transfer from "./transger.svg";
 import bitcoin from "./bitcoin.svg";
+import arrow from "./right-arrow.png";
 
 export {
   logoWhite,
@@ -18,4 +19,5 @@ export {
   donateBg,
   transfer,
   bitcoin,
+  arrow,
 };

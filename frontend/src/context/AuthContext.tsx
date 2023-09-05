@@ -14,7 +14,7 @@ type AuthContextType = {
     switchChain: (chainId: string) => Promise<void>;
     ethereum?: any;
   };
-  
+
 const AuthContext = createContext({
   isAuthenticated: false,
 } as AuthContextType);
@@ -27,7 +27,7 @@ export const AuthContextProvider = ({
   const props = useMetaMask();
 
   const isAuthenticated = Boolean(
-    props.chainId && props.status === "connected" && props.account
+    props.chainId && props.status === "connected" && props.account,
   );
   return (
     <AuthContext.Provider

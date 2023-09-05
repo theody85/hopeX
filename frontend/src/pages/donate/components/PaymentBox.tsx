@@ -126,7 +126,7 @@ const PaymentBox = () => {
             <p className="text-center">
               {successMessage}
               <Link
-                to="/donation-stats"
+                to="/donations-stats"
                 className="text-[#4fa94d] cursor-pointer"
               >
                 {" "}

@@ -1,19 +1,15 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/shadcn/ui/avatar";
-import useQueryStatistics from "./hooks/useQueryStats";
+import { Avatar, AvatarFallback } from "@/components/shadcn/ui/avatar";
 
-export function RecentDonorList() {
-  const { donorList } = useQueryStatistics();
+type DonorListProps = {
+  donors: string[];
+};
+export function DonorList({ donors }: DonorListProps) {
   return (
     <div className="space-y-8">
-      {donorList.map((donor, index) => (
+      {donors.map((donor, index) => (
         <div className="flex items-center cursor-pointer" key={index}>
           <Avatar className="h-9 w-9">
-            <AvatarImage src="/avatars/01.png" alt="Avatar" />
-            <AvatarFallback>{index}</AvatarFallback>
+            <AvatarFallback>{index + 1}</AvatarFallback>
           </Avatar>
           <div className="ml-4 space-y-1">
             <p className="text-sm font-medium leading-none hover:text-[#4fa94d]">
