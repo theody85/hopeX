@@ -22,7 +22,7 @@ const NavBar = () => {
   return (
     <div
       className={cn(
-        "bg-[#0E1111] flex w-full px-8 lg:px-16 lg:py-2 z-50 transition-all duration-300 ease-in-out",
+        "bg-black/90 flex w-full px-8 lg:px-16 fixed top-0 lg:py-2 z-50 transition-all duration-300 ease-in-out",
         scroll ? "fixed top-0 left-0" : "",
       )}
     >
@@ -56,12 +56,21 @@ const NavBar = () => {
             About Us
           </LinkScroll>
           <Link
-            to="/donations-dashboard"
+            to="/auth"
+            state={{ from: { pathname: "/donations-dashboard" } }}
             className="hover:scale-105 hover:text-[#4fa94d] transition-all duration-300 ease-in-out"
           >
             View Donations
           </Link>
-          <Button onClick={() => navigate("/auth")}>Donate Now</Button>
+          <Button
+            onClick={() =>
+              navigate("/auth", {
+                state: { from: { pathname: "/donate" } },
+              })
+            }
+          >
+            Donate Now
+          </Button>
         </div>
       </div>
     </div>

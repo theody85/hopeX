@@ -1,12 +1,14 @@
 import { Button } from "@/components/shadcn/ui/button";
 import { useAuth } from "@/context/AuthContext";
 import { useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const { status, account, chainId, connect, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const prevPath = location.state.from.pathname;
 
   const getStatusMsg = () => {
     switch (status) {
@@ -27,14 +29,14 @@ const Auth = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/donate", {
+      navigate(`${prevPath}`, {
         state: { from: location },
       });
     }
   }, []);
 
   return (
-    <div className="w-full flex flex-col items-center justify-center h-[30rem]">
+    <div className="w-full flex flex-col items-center justify-center min-h-screen">
       <div className="font-robotoSlab text-2xl font-bold mb-4">
         {getStatusMsg()}
       </div>

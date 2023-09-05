@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PaymentBox from "./components/PaymentBox";
 import { logoWhite, transfer } from "@/assets";
 import { useAuth } from "@/context/AuthContext";
@@ -6,15 +6,17 @@ import { useEffect } from "react";
 
 const Donate = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate("/");
+      navigate("/auth", {
+        state: { from: location },
+      });
     }
   }, [isAuthenticated]);
-
   return (
     <div className="container relative min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       <div className="donate-bg relative hidden h-full flex-col bg-[#163300] px-10 pt-5 pb-10 text-white dark:border-r lg:flex">

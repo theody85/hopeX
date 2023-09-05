@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <>
       <div className="hero">
-        <div className="bg-[#0E1111]/80 min-h-screen donate-bg">
+        <div className="bg-black/80 min-h-screen donate-bg">
           <Section>
             <div className="py-16 relative">
               <div className="container">
@@ -52,7 +52,11 @@ const Home = () => {
                       <Jump>
                         <Button
                           className="text-3xl px-6 py-6 items-center"
-                          onClick={() => navigate("/auth")}
+                          onClick={() =>
+                            navigate("/auth", {
+                              state: { from: { pathname: "/donate" } },
+                            })
+                          }
                         >
                           Donate now
                         </Button>
