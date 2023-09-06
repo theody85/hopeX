@@ -60,9 +60,9 @@ To run the project locally for development or testing:
 1. Clone this repository.
 2. Navigate to the `blockchain/` directory and run `npm install` to install the necessary dependencies.
 3. Deploy the smart contract to a Polygon test network of your choice.
-4. Navigate to the `frontend/` directory and run `npm install` to install the frontend dependencies.
+4. Navigate to the `frontend/` directory and run `yarn` to install the frontend dependencies.
 5. Update the frontend configuration to connect to the deployed contract on the Polygon test network.
-6. Run the frontend application with `npm run dev`.
+6. Run the frontend application with `yarn dev`.
 
 ## Contributing
 
