@@ -57,6 +57,10 @@ const PaymentBox = () => {
         return;
       }
 
+      if (amountRef.current) amountRef.current.value = "";
+
+      if (purposeRef.current) purposeRef.current.value = "";
+
       setSuccessMessage(`Thank you for donating!`);
       setError("");
     }
